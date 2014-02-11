@@ -19,13 +19,10 @@ pip install -r requirements.txt
 python3 server.py
 ```
 
-## TODO
+# Instructions
 
-Each person will add one function which must have a url mapping. Look
-at
-[`hi`](https://github.com/binghamton-cs140/name-server/blob/master/server.py#L37)
-in [server.py](server.py) for an example
+- Set first name, city, and two-letter state (e.g. NY) and you'll access the dashboard to check the weather.
 
-The function can do anything you want it to do as long as it uses
-session variables. You can add a decorator, add new session variables,
-be creative!
+# Future plans
+
+- Remove temporary design elements and implement a well-designed interface.

@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>start</title>
+<title>Dashboard</title>
+<link href='http://fonts.googleapis.com/css?family=Jolly+Lodger' rel='stylesheet' type='text/css'>
+<style type="text/css">
+body { background-color: #ADD8E6; }
+#dashboard { text-align: center; margin: 100px 0 0 0; }
+h1 { margin: 0; font-family: 'Jolly Lodger'; font-size: 96px!important; }
+li { font-weight: bold; font-family: 'Jolly Lodger'; font-size: 32px!important; text-align: left!important; }
+</style>
 </head>
 <body>
-<p>Welcome {{name}}</p>
+<div id="dashboard">
+<h1>Welcome {{name}}</h1>
+<hr />
+
+<ul style="text-align: center;">
+<li><a href="/weather">Check out the weather for {{city}}, {{state}}</a></li>
+<li><a href="/logout">End session</a></li>
+</ul>
+</div>
 </body>
 </html>

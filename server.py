@@ -1,5 +1,5 @@
 import bottle
-from bottle import run, template, request, hook, route
+from bottle import run, template, request, hook, route, redirect, static_file
 import beaker.middleware
 
 # Set up a way to keep session variables
@@ -17,28 +17,61 @@ app = beaker.middleware.SessionMiddleware(bottle.app(), session_opts)
 def setup_request():
 	request.session = request.environ['beaker.session']
 
+# Static routes for serving files in the assets directory
+@route('/<filename:re:.*\.js>', method="GET")
+def javascripts(filename):
+    return static_file(filename, root='assets/js')
+
+@route('/<filename:re:.*\.css>', method="GET")
+def stylesheets(filename):
+    return static_file(filename, root='assets/css')
+
+@route('/<filename:re:.*\.(jpg|png|gif|ico)>', method="GET")
+def images(filename):
+    return static_file(filename, root='assets/img')
+
 ################ Interesting code below
 
-# GET requests to index will return a form to fill out a name
-@route('/', method='GET')
+@route('/')
 def index():
-	return template('start')
+        return redirect('/dashboard', code=302)
+
+# GET requests to index will return a form to fill out a name
+@route('/dashboard', method='GET')
+def dashboard():
+        name = request.session.get('name', None)
+        city = request.session.get('city', None)
+        state = request.session.get('state', None)
+        session_list = [name, city, state]
+        if all(session_var is not None for session_var in session_list):
+                return template('welcome', name=name, city=city, state=state)
+        return template('dashboard')
+                
 
 # POST requests to index will acknowledge the user
 # and set a session variable to be used with other requests
-@route('/', method='POST')
-def index():
+@route('/dashboard', method='POST')
+def dashboard():
 	name = request.forms.get('name')
 	request.session['name'] = name
-	return template('welcome', name=name)
+	city = request.forms.get('city')
+	request.session['city'] = city
+	state = request.forms.get('state')
+	request.session['state'] = state	
+	return template('welcome', name=name, city=city, state=state)
 
-# Sample function using request.session dictionary
-@route('/hi')
-def hi():
-	name = request.session.get('name', None)
-	if name is not None:
-		return 'logged in as {}'.format(name)
-	return 'not logged in'
+# Open weather dashboard
+@route('/weather', method='GET')
+def weather():
+        return template('weather', name=request.session['name'], \
+                        city=request.session['city'], \
+                        state=request.session['state'])
+
+# Exit current session
+@route('/logout')
+def logout():
+        request.session.clear()
+        return redirect("/")
 
 # Start the server
 run(app, host='localhost', port=8080)
