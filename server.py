@@ -1,7 +1,6 @@
 import bottle
 from bottle import run, template, request, hook, route, redirect, static_file
 import beaker.middleware
-import os
 
 # Set up a way to keep session variables
 # Unimportant
