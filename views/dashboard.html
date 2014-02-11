@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.4.1/base-min.css&pure/0.4.1/forms-min.css" />
+<link href='http://fonts.googleapis.com/css?family=Jolly+Lodger' rel='stylesheet' type='text/css'>
+<style type="text/css">
+#dashboard { text-align: center; margin: 100px 0 0 0; }
+legend { margin: 0; font-family: 'Jolly Lodger'; font-size: 96px!important; }
+body { background-color: #ADD8E6; }
+label { font-weight: bold; font-family: 'Jolly Lodger'; font-size: 32px!important; text-align: left!important; width:5em!important; }
+.pure-controls { margin: 2em!important; }
+input[type=submit] { padding: 10px 20px; background-color: #0078e7; border: 0 none; color: #fff; cursor: pointer; -webkit-border-radius: 5px; border-radius: 5px; linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1)); }
+</style>
+</head>
+<body>
+<form id="dashboard" class="pure-form pure-form-aligned" method="POST" action="/dashboard">
+<fieldset>
+<legend>Dashboard Login:</legend>
+<div class="pure-control-group">
+<label for="name">First Name: </label>
+<input name="name" type="text">
+</div>
+<div class="pure-control-group">
+<label for="city">City: </label>
+<input name="city" type="text">
+</div>
+<div class="pure-control-group">
+<label for="state">State: </label>
+<input name="state" type="text">
+</div>
+<div class="pure-controls">
+<input type="submit" value="Login" />
+</div>
+</fieldset>
+</form>
+</body>
+</html>
