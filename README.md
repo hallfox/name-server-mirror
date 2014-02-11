@@ -19,6 +19,10 @@ pip install -r requirements.txt
 python3 server.py
 ```
 
-## Instructions
+# Instructions
 
 Set first name, city, and two-letter state (e.g. NY) and you'll access the dashboard to check the weather.
+
+# Future plans
+
+- Remove temporary design elements and implement a well-designed interface.
