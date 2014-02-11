@@ -21,7 +21,7 @@ python3 server.py
 
 # Instructions
 
-Set first name, city, and two-letter state (e.g. NY) and you'll access the dashboard to check the weather.
+- Set first name, city, and two-letter state (e.g. NY) and you'll access the dashboard to check the weather.
 
 # Future plans
 
