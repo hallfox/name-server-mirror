@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Maze Game</title>
+	</head>
+	<body>
+		<p>You wake in a dark bedroom.</p>
+		<p><i>
+		Welcome to the maze, {{name}}. I am the Warden. Here is a place
+		you may never escape from. Why you ask?
+		</i></p>
+		<p><i>The door is closed.</i></p>
+		<p><i>And you don't have the key.</i></p>
+		<form method="POST" action="/maze">
+			<label for="in">What will you do? </label>
+			<input name="in" type="text">
+			<input type="submit">
+		</form>
+	</body>
+</html>
